@@ -1,0 +1,63 @@
+//Program-4: Abstract class Shape to get areas of Triangle,Circle and Rectangle
+
+abstract class Shape {
+    int l, b; // l = length/base/radius, b = breadth/height (or unused for Circle)
+
+    Shape(int l, int b) {
+        this.l = l;
+        this.b = b;
+    }
+
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+
+    Rectangle(int length, int breadth) {
+        super(length, breadth);
+    }
+
+    @Override
+    void printArea() {
+        double area = l * b;
+        System.out.println("Area of Rectangle: " + area);
+    }
+}
+
+class Triangle extends Shape {
+
+    Triangle(int base, int height) {
+        super(base, height);
+    }
+
+    @Override
+    void printArea() {
+        double area = 0.5 * l * b;
+        System.out.println("Area of Triangle: " + area);
+    }
+}
+
+class Circle extends Shape {
+
+    Circle(int radius) {
+        super(radius, 0); // 'b' is not used for Circle
+    }
+
+    @Override
+    void printArea() {
+        double area = Math.PI * l * l;
+        System.out.println("Area of Circle: " + area);
+    }
+}
+
+public class ShapeTest {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle(10, 5);
+        Triangle tri = new Triangle(10, 8);
+        Circle circ = new Circle(7);
+
+        rect.printArea();
+        tri.printArea();
+        circ.printArea();
+    }
+}
