@@ -1,8 +1,74 @@
-//Program-1:
+//Program-1: First Program
 class First
 {
    public static void main(String args[])
    {
       System.out.println("My first program");
+   }
+}
+//Program-2: Quadratic Equation
+import java.util.Scanner;
+class Main
+{
+   public static void main(String[] args)
+   {
+      Scanner ob = new Scanner(System.in);
+      System.out.println("Enter three numbers:");
+      double a = ob.nextInt();
+      double b = ob.nextInt();
+      double c = ob.nextInt();
+      double d = (b*b)-(4*a*c);
+      double r1 = (-b + Math.sqrt(d))/(2*a);
+      double r2 = (-b - Math.sqrt(d))/(2*a);
+      System.out.println("The Discriminant is:" +d);
+      if(d>0){
+         System.out.println("The roots are real and distinct. The roots are: " +r1 +r2);
+      }
+      else if(d==0){
+         System.out.println("The roots are real and equal.The roots are: " +r1 +r2);
+      }
+      else{
+         System.out.println("The roots are not real and are imaginary.");
+      }
+   }
+}
+//Program-3: Quadratic Equation with roots
+import java.util.*;
+class qexp{
+   public static void main(String []args)
+   {
+      Scanner input = new Scanner(System.in);
+      System.out.println("Enter co-efficient of a");
+      double a =input.nextDouble();
+      System.out.println("Enter co-efficient of b");
+      double b =input.nextDouble();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+      System.out.println("Enter co-efficient of c");
+      double c =input.nextDouble();
+      double d=b*b -4*a*c;
+      if(d>0)
+      {
+         double r1= (-b + Math.sqrt(d))/2*a;
+         double r2= (-b - Math.sqrt(d))/2*a;
+         System.out.println("Roots are Real and Distinct");
+         System.out.println("r1= "+ r1);
+         System.out.println("r2= "+ r2);
+      }
+      if(d==0)
+      {
+         double r1=-b/(2*a);
+         double r2=r1;
+         System.out.println("Roots are Real and Equal");
+         System.out.println("r1= "+ r1);
+         System.out.println("r2= "+ r2);
+      }
+      else{
+         double r=-b/(2*a);
+         double i= Math.sqrt(-d)/(2*a);
+         System.out.println("Roots are imaginary");
+         System.out.println("r1="+ r+ " +"+ i+ "i");
+         System.out.println("r1="+ r+ " -"+ i+ "i");
+      }
+   
+   
    }
 }
