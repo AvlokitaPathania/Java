@@ -1,0 +1,61 @@
+//Program 7:
+
+/*Write a program that demonstrates handling of exceptions
+in inheritance tree. Create a base class called “Father” and
+derived class called “Son” which extends the base class. In
+Father class, implement a constructor which takes the age
+and throws the exception WrongAge( ) when the input
+age<0. In Son class, implement a constructor that uses both
+father and son’s age and throws an exception if son’s age is
+>=father’s age*/
+
+import java.util.Scanner;
+
+class WrongAge extends Exception{
+    WrongAge(String msg){
+        System.out.println(msg);
+    }
+}
+
+class Father{
+    int fage;
+    Father(int age) throws WrongAge{
+        if(age<0){
+        throw new WrongAge("Age can't be negative.");
+    }
+    fage=age;
+    }
+}
+
+class Son extends Father{
+    int sage;
+    Son(int fage, int sage) throws WrongAge{
+        super(fage);
+        if(sage<0){
+           throw new WrongAge("Age can't be negative.");
+        }
+        else if(sage>=fage){
+            throw new WrongAge("Father's age can't be lesser than or equal to son's age");
+        }
+        this.sage = sage;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        try{
+        int f;
+        int s;
+        System.out.println("Enter age of Father:\n");
+        f = sc.nextInt();
+        System.out.println("Enter age of Son:\n");
+        s = sc.nextInt();
+
+        Son obj = new Son(f,s);
+        System.out.println("No errors in age.");
+        }catch(WrongAge e){
+            System.out.println("Exception Caught: "+e);
+        }
+    }
+}
