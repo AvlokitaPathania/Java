@@ -1,0 +1,81 @@
+//CIE PACKAGE
+//Personal File
+package CIE;
+
+public class Personal{
+    public String usn;
+    public String name;
+    public int sem;
+    public Personal(String usn, String name, int sem){
+        this.usn=usn;
+        this.name=name;
+        this.sem=sem;       
+    }
+}
+//Internals File
+package CIE;
+
+public class Internals{
+    public int internalMarks[] = new int[5];
+
+    public Internals(int marks[]) {
+        for (int i = 0; i < 5; i++) {
+            internalMarks[i] = marks[i];
+        }
+    }
+}
+
+//SEE PACKAGE
+//External File
+import java.util.*;
+import CIE.*;
+import SEE.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter number of students:");
+        int n = sc.nextInt();
+        sc.nextLine();  
+
+        External ext[] = new External[n];
+        Internals in[] = new Internals[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter name of Student:");
+            String name = sc.nextLine();
+            System.out.println("Enter USN of Student:");
+            String usn = sc.nextLine();
+            System.out.println("Enter semester:");
+            int sem = sc.nextInt();
+            sc.nextLine(); 
+
+            int inMarks[] = new int[5];
+            int seeMarks[] = new int[5];
+
+            System.out.println("Enter Internal Marks:");
+            for (int j = 0; j < 5; j++) {
+                inMarks[j] = sc.nextInt();
+            }
+
+            System.out.println("Enter SEE Marks:");
+            for (int j = 0; j < 5; j++) {
+                seeMarks[j] = sc.nextInt();
+            }
+            in[i] = new Internals(inMarks);
+            ext[i] = new External(usn, name, sem, seeMarks);
+        }
+        System.out.println("\nFINAL STUDENTS:");
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nStudent Name: " + ext[i].name);
+            System.out.println("USN: " + ext[i].usn);
+            System.out.println("Semester: " + ext[i].sem);
+            for (int j = 0; j < 5; j++) {
+                int finalMarks = (in[i].internalMarks[j] / 2) + (ext[i].seeMarks[j] / 2);
+                System.out.println("Course " + (j + 1) + ": " + finalMarks);
+            }
+        }
+    }
+}
